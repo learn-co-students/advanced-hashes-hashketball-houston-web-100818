@@ -140,17 +140,14 @@ def shoe_size(name)
 end
 
 
-def team_colors(team)
-  new_array = []
-  game_hash.each do |keys, values|
-    values.each do |data_labels, data|
-      if data == team
-        new_array << game_hash[keys][:colors]
-      end
+def team_colors(team_name)
+  game_hash.each do |team, team_data|
+    if team_data[:team_name] == team_name
+      return team_data[:colors]
     end
   end
-  new_array.flatten
 end
+
 
 def team_names
   game_hash.collect{|team, team_data| team_data[:team_name]}
